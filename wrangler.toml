@@ -1,0 +1,18 @@
+name = "naples-air-experts"
+compatibility_date = "2025-10-01"
+compatibility_flags = ["nodejs_compat"]
+
+# OpenNext output — produced by: npx @opennextjs/cloudflare build
+main = ".open-next/worker.js"
+
+# Cloudflare Pages build output directory (OpenNext)
+pages_build_output_dir = ".open-next"
+
+[vars]
+NEXT_PUBLIC_SITE_URL = "https://www.naplesairexperts.com"
+# DATABASE_URL and LEAD_WEBHOOK_URL are set in the Cloudflare dashboard
+# (Workers & Pages -> Settings -> Variables and Secrets) — never commit them.
+
+[assets]
+binding = "ASSETS"
+directory = ".open-next/assets"

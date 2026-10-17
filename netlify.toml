@@ -1,0 +1,65 @@
+# ---------------------------------------------------------------------------
+# Naples Air Experts — Netlify configuration
+# Single build block, no duplicate keys, no redirects inside headers blocks.
+# ---------------------------------------------------------------------------
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NPM_FLAGS = "--no-audit --no-fund"
+
+[context.production.environment]
+  NODE_VERSION = "22"
+
+# Static asset caching
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+# Security headers for every response
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Trailing-slash friendly redirects for common typed variants
+[[redirects]]
+  from = "/ac-repair"
+  to = "/ac-repair-naples-fl/"
+  status = 301
+
+[[redirects]]
+  from = "/ac-installation"
+  to = "/ac-installation-naples-fl/"
+  status = 301
+
+[[redirects]]
+  from = "/emergency-ac-repair"
+  to = "/emergency-ac-repair-naples-fl/"
+  status = 301
+
+[[redirects]]
+  from = "/contact-us"
+  to = "/contact/"
+  status = 301
